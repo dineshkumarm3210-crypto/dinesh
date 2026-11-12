@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Love Surprise ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #000000, #33001b);
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: pink;
+    text-shadow: 0 0 15px hotpink;
+    font-size: 30px;
+}
+
+.heart {
+    font-size: 130px;
+    animation: heartbeat 1s infinite;
+    filter: drop-shadow(0 0 20px red);
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+p {
+    color: #ffd6e7;
+    font-size: 16px;
+}
+
+button {
+    background: #ff1493;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px hotpink;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+#message {
+    display: none;
+    color: #ffb6c1;
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 25px;
+    text-shadow: 0 0 15px hotpink;
+    animation: appear 0.7s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.floating {
+    position: fixed;
+    bottom: -40px;
+    pointer-events: none;
+    animation: floatUp 7s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>A Special Surprise For You ❤️</h1>
+
+    <div class="heart">❤️</div>
+
+    <p>Someone has a little surprise for you! ✨</p>
+
+    <button id="surpriseBtn" type="button">
+        Tap for a surprise 💌
+    </button>
+
+    <div id="message">
+        You are beautiful. ❤️
+    </div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const button = document.getElementById("surpriseBtn");
+    const message = document.getElementById("message");
+
+    button.addEventListener("click", function() {
+        message.style.display = "block";
+    });
+
+    const hearts = ["❤️", "💕", "💖", "💗", "💘"];
+
+    for (let i = 0; i < 25; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "floating";
+
+        heart.textContent =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (4 + Math.random() * 5) + "s";
+
+        heart.style.animationDelay =
+            (Math.random() * 5) + "s";
+
+        heart.style.fontSize =
+            (20 + Math.random() * 20) + "px";
+
+        document.body.appendChild(heart);
+    }
+
+});
+</script>
+
+</body>
+</html>
